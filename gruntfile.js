@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var _ = require('lodash'),
     defaultAssets = require('./config/assets/default'),
@@ -40,23 +40,9 @@ module.exports = function (grunt) {
                     livereload: true
                 }
             },
-            clientCSS: {
-                files: defaultAssets.client.css,
-                tasks: ['csslint'],
-                options: {
-                    livereload: true
-                }
-            },
-            clientSCSS: {
-                files: defaultAssets.client.sass,
-                tasks: ['sass', 'csslint'],
-                options: {
-                    livereload: true
-                }
-            },
             clientLESS: {
                 files: defaultAssets.client.less,
-                tasks: ['less', 'csslint'],
+                tasks: ['less'],
                 options: {
                     livereload: true
                 }
