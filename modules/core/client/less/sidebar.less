@@ -16,8 +16,27 @@
 @hamburger-color-closed: fadeout(@text-color, 30);
 @hamburger-color-open: @text-color;
 
+@gray-base: #000;
+@gray-darker: lighten(@gray-base, 13.5%); // #222
+@gray-dark: lighten(@gray-base, 20%); // #333
+@gray: lighten(@gray-base, 33.5%); // #555
+@gray-light: lighten(@gray-base, 46.7%); // #777
+@gray-lighter: lighten(@gray-base, 93.5%); // #eee
 
+//=== Inverted navbar
+// Reset inverted navbar basics
+@navbar-inverse-color: lighten(@gray-light, 15%);
+@navbar-inverse-bg: #222;
+@navbar-inverse-border: darken(@navbar-inverse-bg, 10%);
 
+// Inverted navbar links
+@navbar-inverse-link-color: lighten(@gray-light, 15%);
+@navbar-inverse-link-hover-color: #fff;
+@navbar-inverse-link-hover-bg: transparent;
+@navbar-inverse-link-active-color: @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg: darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color: #444;
+@navbar-inverse-link-disabled-bg: transparent;
 
 @margin-top: 50px;
 @width1: 220px;
@@ -67,7 +86,7 @@ html {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
-    background: #1a1a1a;
+    background: @navbar-inverse-bg;
     height: @full-height;
     left: 220px;
     margin-top: @margin-top;
@@ -98,133 +117,23 @@ html {
       line-height: 20px;
       position: relative;
       width: @full-width;
-      &:before {
-        background-color: #1c1c1c;
-        content: '';
-        height: @full-height;
-        left: 0;
-        position: absolute;
-        top: 0;
-        transition: width .2s ease-in;
-        width: 0px;
-        z-index: -1;
-      }
-      &:first-child {
-        a {
-          background-color: @side-color-1;
-          color: #ffffff;
-        }
-      }
-      &:nth-child(2) {
-        &:before {
-          background-color: @side-color-2;
-        }
-      }
-      &:nth-child(3) {
-        &:before {
-          background-color: @side-color-3;
-        }
-      }
-      &:nth-child(4) {
-        &:before {
-          background-color: @side-color-4;
-        }
-      }
-      &:nth-child(5) {
-        &:before {
-          background-color: @side-color-5;
-        }
-      }
-      &:nth-child(6) {
-        &:before {
-          background-color: @side-color-6;
-        }
-      }
-      &:nth-child(7) {
-        &:before {
-          background-color: @side-color-7;
-        }
-      }
-      &:nth-child(8) {
-        &:before {
-          background-color: @side-color-8;
-        }
-      }
-      &:nth-child(9) {
-        &:before {
-          background-color: @side-color-9;
-        }
-      }
-      &:hover {
-        &:before {
-          transition: width .2s ease-in;
-          width: @full-width;
-        }
-      }
       a {
-        color: #dddddd;
+        color: @navbar-inverse-link-color;
         display: block;
         padding: 10px 15px 10px 30px;
         text-decoration: none;
-      }
-    }
-    li.open {
-      &:hover {
-        &:before {
-          transition: width .2s ease-in;
-          width: @full-width;
+        &:hover, &:focus, &:active{
+          background-color: @navbar-inverse-link-active-bg !important;
+          color: @navbar-inverse-link-active-color;
+          text-decoration: none;
         }
       }
     }
-    .dropdown-menu {
-      background-color: #222222;
-      border-radius: 0;
-      border: none;
-      box-shadow: none;
-      margin: 0;
-      padding: 0;
-      position: relative;
-      width: @full-width;
+    > .sidebar-brand {
+      font-size: 20px;
+      height: 65px;
+      line-height: 44px;
     }
-  }
-  .sidebar-nav li {
-    a:hover,
-    a:active {
-      background-color: transparent;
-      color: #000000;
-      text-decoration: none;
-    }
-    a:focus {
-      background-color: transparent;
-      color: #808080;
-      text-decoration: none;
-    }
-    &:nth-child(1) {
-      a:hover,
-      a:active,
-      a:focus {
-        background-color: transparent;
-        color: #FFFFFF;
-        text-decoration: none;
-      }
-    }
-  }
-
-  //.sidebar-nav li a:hover,
-  //.sidebar-nav li a:active,
-  //.sidebar-nav li a:focus,
-  //.sidebar-nav li.open a:hover,
-  //.sidebar-nav li.open a:active,
-  //.sidebar-nav li.open a:focus {
-  //  background-color: transparent;
-  //  color: #000000;
-  //  text-decoration: none;
-  //}
-
-  .sidebar-nav > .sidebar-brand {
-    font-size: 20px;
-    height: 65px;
-    line-height: 44px;
   }
 
   .hamburger {
@@ -349,49 +258,4 @@ html {
     }
   }
 
-  /*-------------------------------*/
-
-  /*          Dark Overlay         */
-
-  /*-------------------------------*/
-
-  .overlay {
-    position: fixed;
-    display: none;
-    width: @full-width;
-    height: @full-height;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .4);
-    z-index: 1;
-  }
 }
-
-/* SOME DEMO STYLES - NOT REQUIRED */
-
-//body,
-//html {
-//  background-color: @bg-color
-//}
-//
-//body {
-//  h1,
-//  h2,
-//  h3,
-//  h4 {
-//    color: fadeout(@text-color, 10);
-//  }
-//  p,
-//  blockquote {
-//    color: fadeout(@text-color, 30);
-//  }
-//  a {
-//    color: fadeout(@text-color, 20);
-//    text-decoration: underline;
-//    &:hover {
-//      color: @text-color;
-//    }
-//  }
-//}
